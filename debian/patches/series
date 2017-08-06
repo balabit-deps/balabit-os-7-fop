@@ -1,0 +1,8 @@
+04_fixqdoxbuildfailure.patch
+fixbuildxml.patch
+replace-sRGB-profile.patch
+hyph_stacksize.patch
+strip_user_host_from_manifest.patch
+javadoc_encoding.patch
+javadoc_allow-script-in-comments.patch
+CVE-2017-5661.patch

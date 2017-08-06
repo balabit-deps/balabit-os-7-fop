@@ -1,0 +1,81 @@
+Description: Strip user and host from MANIFEST
+ Strip user, host and os variables from MANIFEST.MF, to make the build
+ reproducible.
+Author: Alexis Bienvenüe <pado@passoire.fr>
+
+--- fop-2.1.orig/build.xml
++++ fop-2.1/build.xml
+@@ -461,7 +461,7 @@ list of possible build targets.
+         <attribute name="Implementation-Title" value="${Name}"/>
+         <attribute name="Implementation-Version" value="${version}"/>
+         <attribute name="Implementation-Vendor" value="The Apache Software Foundation (http://xmlgraphics.apache.org/fop/)"/>
+-        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}, Java ${java.runtime.version}, Target Java ${javac.target}])"/>
++        <attribute name="Build-Id" value="${ts} (Java ${java.runtime.version}, Target Java ${javac.target})"/>
+       </manifest>
+     </jar>
+   </target>
+@@ -483,7 +483,7 @@ list of possible build targets.
+     <jar jarfile="${build.dir}/fop.jar" basedir="${build.classes.dir}" manifest="${basedir}/fop.mf">
+       <manifest>
+         <attribute name="Main-Class" value="org.apache.fop.cli.Main"/>
+-        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}, Java ${java.runtime.version}, Target Java ${javac.target}])"/>
++        <attribute name="Build-Id" value="${ts} (Java ${java.runtime.version}, Target Java ${javac.target})"/>
+         <section name="org/apache/fop/">
+           <attribute name="Specification-Title" value="XSL-FO - Extensible Stylesheet Language"/>
+           <attribute name="Specification-Version" value="1.1"/>
+@@ -508,7 +508,7 @@ list of possible build targets.
+     </tstamp>
+     <jar jarfile="${build.dir}/fop-sandbox.jar" basedir="${build.sandbox-classes.dir}">
+       <manifest>
+-        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}, Java ${java.runtime.version}, Target Java ${javac.target}])"/>
++        <attribute name="Build-Id" value="${ts} (Java ${java.runtime.version}, Target Java ${javac.target})"/>
+       </manifest>
+       <metainf dir="${basedir}" includes="LICENSE,NOTICE"/>
+     </jar>
+@@ -638,7 +638,7 @@ list of possible build targets.
+         <attribute name="Implementation-Title" value="${fop-transcoder.name}"/>
+         <attribute name="Implementation-Version" value="${fop-transcoder.version}"/>
+         <attribute name="Implementation-Vendor" value="The Apache Software Foundation (http://xmlgraphics.apache.org/fop/)"/>
+-        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}, Java ${java.runtime.version}, Target Java ${javac.target}])"/>
++        <attribute name="Build-Id" value="${ts} (Java ${java.runtime.version}, Target Java ${javac.target})"/>
+       </manifest>
+       <metainf dir="${basedir}" includes="LICENSE,NOTICE"/>
+     </jar>
+@@ -673,7 +673,7 @@ list of possible build targets.
+         <attribute name="Implementation-Title" value="${fop-transcoder.name}"/>
+         <attribute name="Implementation-Version" value="${fop-transcoder.version}"/>
+         <attribute name="Implementation-Vendor" value="The Apache Software Foundation (http://xmlgraphics.apache.org/fop/)"/>
+-        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}, Java ${java.runtime.version}, Target Java ${javac.target}])"/>
++        <attribute name="Build-Id" value="${ts} (Java ${java.runtime.version}, Target Java ${javac.target})"/>
+       </manifest>
+       <metainf dir="${basedir}" includes="LICENSE,NOTICE"/>
+     </jar>
+@@ -1044,7 +1044,7 @@ NOTE:
+   <target name="jar-javadocs" depends="javadocs" description="Generates a jar file containing the Javadocs">
+     <jar jarfile="${build.dir}/${name}-${version}-javadoc.jar">
+       <manifest>
+-        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}, Java ${java.runtime.version}, Target Java ${javac.target}])"/>
++        <attribute name="Build-Id" value="${ts} (Java ${java.runtime.version}, Target Java ${javac.target})"/>
+       </manifest>
+       <fileset dir="${build.javadocs.dir}"/>
+       <metainf dir="${basedir}" includes="LICENSE,NOTICE"/>
+@@ -1348,7 +1348,7 @@ NOTE:
+     </antcall>
+     <jar jarfile="${build.dir}/${name}-${version}-bundle.jar">
+       <manifest>
+-        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}, Java ${java.runtime.version}])"/>
++        <attribute name="Build-Id" value="${ts} (Java ${java.runtime.version})"/>
+       </manifest>
+       <fileset dir="${build.dir}">
+         <patternset>
+--- fop-2.1.orig/examples/plan/build.xml
++++ fop-2.1/examples/plan/build.xml
+@@ -133,7 +133,7 @@
+         <attribute name="Implementation-Title" value="${Name}"/>
+         <attribute name="Implementation-Version" value="${version}"/>
+         <attribute name="Implementation-Vendor" value="Apache Software Foundation (http://xmlgraphics.apache.org/fop/)"/>
+-        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}])"/>
++        <attribute name="Build-Id" value="${ts}"/>
+     </manifest>
+     </jar>
+   </target>

@@ -1,0 +1,65 @@
+#!/usr/bin/make -f
+# debian/rules for FOP (uses CDBS)
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/ant.mk
+
+JAVA_HOME            := /usr/lib/jvm/default-java
+DEB_JARS             := batik-all xml-apis-ext batik-libs xml-apis avalon-framework xercesImpl xmlParserAPIs xalan2 junit commons-io commons-logging xmlgraphics-commons servlet-api-3.1 fontbox # ant-junit junit xmlunit mockito-core
+DEB_ANT_BUILD_TARGET := package javadocs #junit #docs
+DEB_ANT_CLEAN_TARGET := distclean
+DEB_ANT_ARGS := -verbose
+DEB_COMPRESS_EXCLUDE := .xconf
+
+DOCD=debian/fop-doc/usr/share/doc/fop-doc
+
+pre-build::
+	# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=639162#24
+	# For this reason qdox is not listed in DEB_JARS
+	cp -L /usr/share/java/qdox.jar lib/build
+	
+	unzip -j -o debian/offo-hyphenation_v2.2.zip \
+		offo-hyphenation/hyph/\* -d hyph/
+
+install/libfop-java::
+	mh_installpom -plibfop-java $(CURDIR)/debian/pom.xml
+	mh_installjar -plibfop-java -l $(CURDIR)/debian/pom.xml \
+		$(CURDIR)/build/fop.jar
+	
+	mkdir -p $(CURDIR)/debian/libfop-java/usr/share/fop/
+	cp -a $(CURDIR)/build/fop-hyph.jar $(CURDIR)/debian/libfop-java/usr/share/fop/
+
+
+install/fop::
+	cp -a debian/fop.sh debian/fop/usr/bin/fop
+	cp -a debian/fop-ttfreader.sh debian/fop/usr/bin/fop-ttfreader
+	cp -a	debian/fop.1 build/fop.1
+
+	pod2man --section=1 \
+		--release="Fop-TTFReader " \
+		debian/fop-ttfreader.pod > build/fop-ttfreader.1
+
+install/fop-doc::
+	-mkdir -p debian/fop-doc/usr/share/doc/fop-doc/html/api
+	#No documentation at the moment... FORREST needed
+	#cp -a build/docs/* html/
+	cp -a build/javadocs/* debian/fop-doc/usr/share/doc/fop-doc/html/api/
+
+clean::
+	-rm -Rf build
+	mkdir -p lib/build
+	rm -f lib/build/qdox.jar
+	rm -f hyph/*.xml
+	mh_clean
+
+debian/fop.1: debian/fop.1.in
+	help2man --no-info --version-option=-version --no-discard-stderr --include=debian/fop.1.in --output=debian/fop.1 fop
+	sed -i -e 's/^USAGE$$/.SH SYNOPSIS/' debian/fop.1
+	sed -i -e 's/^\[OPTIONS\]$$/.SH OPTIONS/' debian/fop.1
+	sed -i -e 's/^\[INPUT\]$$/.SH INPUT/' debian/fop.1
+	sed -i -e 's/^\[OUTPUT\]$$/.SH OUTPUT/' debian/fop.1
+	sed -i -e 's/^\[Examples\]$$/.SH EXAMPLES/' debian/fop.1
+	sed -i -e 's/^fop .*$$/\n&/' debian/fop.1
+
+get-orig-source:
+	uscan --force-download --rename

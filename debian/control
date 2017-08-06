@@ -1,0 +1,96 @@
+Source: fop
+Section: text
+Priority: optional
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Uploaders: Torsten Werner <twerner@debian.org>,
+           Mathieu Malaterre <malat@debian.org>,
+           Vincent Fourmond <fourmond@debian.org>
+Build-Depends: cdbs (>= 0.4.27), debhelper (>= 5)
+Build-Depends-Indep: ant-optional (>= 1.8.2),
+                     default-jdk (>= 2:1.8-58),
+                     junit4,
+                     libavalon-framework-java (>= 4.1.2-2),
+                     libbatik-java (>= 1.8),
+                     libcommons-io-java,
+                     libcommons-logging-java,
+                     libfontbox-java,
+                     libmockito-java,
+                     libqdox-java (>= 1.12),
+                     libservlet3.1-java,
+                     libxalan2-java,
+                     libxerces2-java,
+                     libxml-commons-external-java,
+                     libxmlgraphics-commons-java (>= 2.1),
+                     libxmlunit-java,
+                     maven-repo-helper,
+                     unzip
+Standards-Version: 3.9.8
+Homepage: http://xmlgraphics.apache.org/fop/
+Vcs-Svn: svn://anonscm.debian.org/pkg-java/trunk/fop
+Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-java/trunk/fop/
+
+Package: fop
+Architecture: all
+Depends: default-jre-headless | java2-runtime-headless,
+         libfop-java (= ${binary:Version}),
+         ${misc:Depends}
+Recommends: libsaxon-java
+Suggests: fop-doc
+Description: XML formatter driven by XSL Formatting Objects (XSL-FO.) - app
+ FOP is a Java application that reads a formatting object tree and then
+ turns it into a wide variety of output presentations (including AFP,
+ PCL, PDF, PNG, PostScript, RTF, TIFF, and plain text), or displays
+ the result on-screen.
+ .
+ The formatting object tree can be in the form of an XML document
+ (output by an XSLT engine like xalan) or can be passed in memory as a
+ DOM Document or (in the case of xalan) SAX events.
+ .
+ This package contains the fop command line tool
+
+Package: libfop-java
+Section: java
+Architecture: all
+Depends: java-wrappers (>= 0.1.15),
+         libavalon-framework-java (>= 4.1.2-2),
+         libbatik-java (>= 1.8),
+         libbsf-java,
+         libcommons-io-java,
+         libcommons-logging-java,
+         libfontbox-java,
+         libxalan2-java,
+         libxerces2-java,
+         libxml-commons-external-java,
+         libxmlgraphics-commons-java (>= 2.1),
+         libxt6,
+         libxtst6,
+         ${misc:Depends}
+Recommends: icc-profiles-free, libsaxon-java
+Description: XML formatter driven by XSL Formatting Objects (XSL-FO.) - libs
+ FOP is a Java application that reads a formatting object tree and then
+ turns it into a wide variety of output presentations (including AFP,
+ PCL, PDF, PNG, PostScript, RTF, TIFF, and plain text), or displays
+ the result on-screen.
+ .
+ The formatting object tree can be in the form of an XML document
+ (output by an XSLT engine like xalan) or can be passed in memory as a
+ DOM Document or (in the case of xalan) SAX events.
+ .
+ This package contains the fop jar file
+
+Package: fop-doc
+Section: doc
+Architecture: all
+Replaces: libfop-java-doc
+Depends: ${misc:Depends}
+Description: XML formatter driven by XSL Formatting Objects (doc) - doc
+ FOP is a Java application that reads a formatting object tree and then
+ turns it into a wide variety of output presentations (including AFP,
+ PCL, PDF, PNG, PostScript, RTF, TIFF, and plain text), or displays
+ the result on-screen.
+ .
+ The formatting object tree can be in the form of an XML document
+ (output by an XSLT engine like xalan) or can be passed in memory as a
+ DOM Document or (in the case of xalan) SAX events.
+ .
+ This package contains the documentation.
