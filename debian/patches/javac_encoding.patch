@@ -1,0 +1,14 @@
+Added encoding for javac
+Index: fop/build.xml
+===================================================================
+--- fop.orig/build.xml
++++ fop/build.xml
+@@ -320,7 +320,7 @@ list of possible build targets.
+   <target name="compile-java" depends="init, codegen">
+ <!-- create directories -->
+     <mkdir dir="${build.classes.dir}"/>
+-    <javac destdir="${build.classes.dir}" includeAntRuntime="true">
++    <javac encoding="UTF-8" destdir="${build.classes.dir}" includeAntRuntime="true">
+       <src path="${build.gensrc.dir}"/>
+       <src path="${src.java.dir}"/>
+       <patternset includes="**/*.java"/>

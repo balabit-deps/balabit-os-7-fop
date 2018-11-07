@@ -1,3 +1,4 @@
+javac_encoding.patch
 04_fixqdoxbuildfailure.patch
 fixbuildxml.patch
 replace-sRGB-profile.patch
