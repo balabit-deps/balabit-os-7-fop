@@ -1,3 +1,9 @@
+fop (1:2.1-7ubuntu1bb1) balabit-os-7.0; urgency=medium
+
+  * Fixed encoding build errors
+
+ -- bbalazs <balazs.benedek@balabit.com>  Wed, 07 Nov 2018 16:42:06 +0100
+
 fop (1:2.1-7) unstable; urgency=medium
 
   * Team upload.
@@ -47,7 +53,7 @@ fop (1:2.1-2) unstable; urgency=medium
   * Remove myself from the uploaders
 
   [ Mathieu Malaterre ]
-  * Fix Couldn't find hyphenation pattern. Closes: #805472 
+  * Fix Couldn't find hyphenation pattern. Closes: #805472
 
  -- Mathieu Malaterre <malat@debian.org>  Mon, 15 Feb 2016 08:47:55 +0100
 
@@ -90,7 +96,7 @@ fop (1:2.0+dfsg-2) experimental; urgency=medium
 fop (1:2.0+dfsg-1) experimental; urgency=medium
 
   * New upstream. Closes: #792132
-  * Transition to libservlet3.0-java. Closes: #709178 
+  * Transition to libservlet3.0-java. Closes: #709178
   * Bump Std-Vers to 3.9.6, no changes needed
   * Remove old Breaks/Replace (oldstable version)
   * Update d/watch to use d/copyright File-Excluded
@@ -200,7 +206,7 @@ fop (1:1.0.dfsg2-1) unstable; urgency=low
 
   [ Mathieu Malaterre ]
   * Revert changelog numbering to please tar script
-  * Fix JAVA_HOME value in debian/rules 
+  * Fix JAVA_HOME value in debian/rules
   * Fix qdox 1.12 build failure. Closes: #638532
 
  -- Sylvestre Ledru <sylvestre@debian.org>  Mon, 22 Aug 2011 18:06:46 +0200
@@ -304,7 +310,7 @@ fop (1:0.95.dfsg-5) unstable; urgency=low
 
 fop (1:0.95.dfsg-4) unstable; urgency=low
 
-  * Recommends libsaxon-java in order to process png files 
+  * Recommends libsaxon-java in order to process png files
     (Closes: #508400)
   * debian/libfop-java* removed (replaced by fop)
   * conf/fop.xconf is now installed in /usr/share/doc/fop (Closes: #498629)
@@ -322,10 +328,10 @@ fop (1:0.95.dfsg-2) experimental; urgency=low
   * Tighten up depencies on libxmlgraphics-commons-java and add xml-apis-ext
     to the wrapper script (closes: #505582)
   * Depends on libxml-commons-external-java use openjdk-jre-6 as
-    'preferred' JVM (I'm not sure it will run on non-Sun runtime), thanks 
-    to Kobayashi Noritada <nori1@dolphin.c.u-tokyo.ac.jp> for spotting and for 
+    'preferred' JVM (I'm not sure it will run on non-Sun runtime), thanks
+    to Kobayashi Noritada <nori1@dolphin.c.u-tokyo.ac.jp> for spotting and for
     advice (closes: 508485)
-  * Add ${misc:Depends} for possible dh_*-added dependencies, with 
+  * Add ${misc:Depends} for possible dh_*-added dependencies, with
     the side benefits that it makes lintian happy !
 
  -- Vincent Fourmond <fourmond@debian.org>  Thu, 11 Dec 2008 21:09:32 +0100
@@ -334,7 +340,7 @@ fop (1:0.95.dfsg-1) experimental; urgency=low
 
   [ Sylvestre Ledru ]
   * New upstream version (Closes: #494041)
-  * Section change in fop-doc.doc-base from contrib/libs => Text to make 
+  * Section change in fop-doc.doc-base from contrib/libs => Text to make
     lintian happier
   * Dependencies removed (Closes: #229079, #271654)
   * Update of the JAVA_HOME in debian/ant.properties (Closes: #492322)
@@ -447,7 +453,7 @@ fop (1:0.20.5-5) unstable; urgency=low
   * Use libxerces2-java instead of libxerces-java (closes: 298525)
   * Removed conflicts with libfop-java and libfop-java-doc (closes: 251270)
   * avdyk: added Wolfgang to the uploaders
-  
+
  -- Wolfgang Baer <WBaer@gmx.de>  Fri, 11 Mar 2005 11:09:13 +0100
 
 fop (1:0.20.5-4) unstable; urgency=low
